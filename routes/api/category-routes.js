@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({ include: [Product] })
-    .then((allCategoryData) => {
-      res.json(allCategoryData)
+    .then((allCategory) => {
+      res.json(allCategory)
     });
 });
 
@@ -16,8 +16,8 @@ router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   Category.findByPk(req.params.id, { include: [Product] })
-    .then((oneCategoryData) => {
-      res.json(oneCategoryData)
+    .then((oneCategory) => {
+      res.json(oneCategory)
     });
 });
 
