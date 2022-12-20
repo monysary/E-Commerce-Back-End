@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
   Category.findAll({ include: [Product] })
     .then((allCategory) => {
       res.json(allCategory)
-    });
+    })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.get('/:id', (req, res) => {
@@ -18,7 +19,8 @@ router.get('/:id', (req, res) => {
   Category.findByPk(req.params.id, { include: [Product] })
     .then((oneCategory) => {
       res.json(oneCategory)
-    });
+    })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.post('/', (req, res) => {
@@ -27,6 +29,7 @@ router.post('/', (req, res) => {
     .then((newCategory) => {
       res.json(newCategory)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.put('/:id', (req, res) => {
@@ -35,6 +38,7 @@ router.put('/:id', (req, res) => {
     .then((updatedCategory) => {
       res.json(updatedCategory)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.delete('/:id', (req, res) => {
@@ -43,6 +47,7 @@ router.delete('/:id', (req, res) => {
     .then((deletedCategory) => {
       res.json(deletedCategory)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 module.exports = router;

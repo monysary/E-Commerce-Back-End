@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
     .then((allProducts) => {
       res.json(allProducts)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 // get one product
@@ -21,6 +22,7 @@ router.get('/:id', (req, res) => {
     .then((oneProduct) => {
       res.json(oneProduct)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 // create new product
@@ -103,6 +105,7 @@ router.delete('/:id', (req, res) => {
     .then((deletedProduct) => {
       res.json(deletedProduct)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 module.exports = router;

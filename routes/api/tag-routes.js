@@ -16,10 +16,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
-  Tag.findByPk(req.params.id)
+  Tag.findByPk(req.params.id, { include: [Product] })
     .then((oneTag) => {
       res.json(oneTag)
     })
+    .catch((err) => res.status(500).json(err));
+    
 });
 
 router.post('/', (req, res) => {
@@ -28,6 +30,7 @@ router.post('/', (req, res) => {
     .then((createdTag) => {
       res.json(createdTag)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.put('/:id', (req, res) => {
@@ -36,6 +39,7 @@ router.put('/:id', (req, res) => {
     .then((updatedTag) => {
       res.json(updatedTag)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 router.delete('/:id', (req, res) => {
@@ -44,6 +48,7 @@ router.delete('/:id', (req, res) => {
     .then((deletedTag) => {
       res.json(deletedTag)
     })
+    .catch((err) => res.status(500).json(err));
 });
 
 module.exports = router;
